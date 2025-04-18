@@ -4,10 +4,13 @@ class Conuter extends Component {
     count:4,
     tags:['tags1', 'tags2', 'tags3']
   } ;
-  handleIcrement = () =>{
+  formatCount = () =>{
     const {count} = this.state;
     return this.state.count === 0 ? "zero" : count;
 
+  }
+  handleIncrement = () => {
+    this.setState({count: this.state.count+1});
   }
 
   getBadgeClasses(){
@@ -20,8 +23,8 @@ class Conuter extends Component {
   render() { 
     return (
       <div>
-        <span className={this.getBadgeClasses()}>{this. handleIcrement()}</span>
-         <button className="w-30 h-8 bg-gray-600 text-white rounded-md">Increment</button>
+        <span className={this.getBadgeClasses()}>{this. formatCount()}</span>
+         <button onClick={() => this.handleIncrement({id:1})} className="w-30 h-8 bg-gray-600 text-white rounded-md">Increment</button>
           <ul>{this.state.tags.map((tag, index) => <li key={index}>{tag}</li>)}</ul>
       </div>
     );
