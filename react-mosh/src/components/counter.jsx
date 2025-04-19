@@ -29,6 +29,10 @@ class Counter extends Component {
                className="w-30 h-8 bg-gray-600 text-white rounded-md">
                Increment
           </button>
+          <button onClick={() => this.props.onDelete(this.props.id)} 
+               className="w-30 h-8 bg-red-600 text-white rounded-md">
+               Delete
+          </button>
        </div>);
   }
 }

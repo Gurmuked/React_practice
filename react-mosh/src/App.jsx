@@ -5,11 +5,11 @@ import Movies from './components/Movies';
 function App() {
 
   return (
-    <>
-       <Movies />
+    <div>
+      <Movies />
       <Counters />
       
-    </>
+    </div>
   )
 }
 
