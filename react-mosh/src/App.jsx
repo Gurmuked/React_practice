@@ -1,5 +1,5 @@
 import React from 'react';
-import Counter from './components/counter';
+import Counters from './components/counters';
 import Movies from './components/Movies';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
        <Movies />
-      <Counter />
+      <Counters />
       
     </>
   )

@@ -4,7 +4,6 @@ import {getMovies} from './fakeMovies';
 class Movies extends Component {
   state = { 
     movies: getMovies()
-     // Initialize movies from fakeMovies.js
   };
 
   handleDelete = (movie) => {
@@ -12,8 +11,7 @@ class Movies extends Component {
     this.setState({movies:mov});
   }
   render() { 
-    const { movies } = this.state; // Destructure movies from state
-    console.log(this.state.movies);
+    const { movies } = this.state; 
 
     if (movies.length === 0) return <p  className="text-2xl text-red-600 font-bold pl-2 mb-5 mt-10">There are no movies in the database.</p>;
 
