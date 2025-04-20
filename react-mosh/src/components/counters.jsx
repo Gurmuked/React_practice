@@ -3,50 +3,24 @@ import Counter from './counter';
 
 
 class Counters extends Component {
-  state = { 
-    counters:[
-      {id:1, value:0},
-      {id:2, value:4},
-      {id:3, value:0},
-      {id:4, value:0},
-    ]
-  } ;
-  handleIncrement = counter => {
-    const counters = [...this.state.counters];
-    const index = counters.indexOf(counter);
-    //counters[index] = {...counter};
-    counters[index].value++;
-    this.setState({counters});
-  }
-
-  handleDelete =(counterId)=>{
-    const counters = this.state.counters.filter(c => c.id !== counterId);
-    this.setState({counters});
-  }
-  handleReset =()=>{
-    const counters = this.state.counters.map(c =>{
-      c.value= 0;
-      return c;
-    });
-    this.setState({counters});
-  }
+ 
 
   render() { 
     return (
       <div>
-              <button onClick={() =>  this.handleReset()} 
-               className="w-50 h-8 bg-blue-500 text-white rounded-md ml-15 mt-10 mb-5">
-               Reset
-             </button>
-        {this.state.counters.map(counter =>( 
+          <button onClick={this.props.onReset} 
+            className="w-50 h-8 bg-blue-500 text-white rounded-md ml-15 mt-10 mb-5">
+            Reset
+          </button>
+        {this.props.counters.map(counter =>( 
           <Counter 
             key={counter.id} 
-            onIncrement={() => this.handleIncrement(counter)} 
-            onDelete={() =>this.handleDelete(counter.id)} 
+            onIncrement={this.props.onIncrement} 
+            onDelete={this.props.onDelete} 
             counter={counter} />
           ))}
       </div>
-    );
+    ); 
   }
 }
  
