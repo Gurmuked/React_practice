@@ -44,14 +44,14 @@ render(){
   return (
     <React.Fragment>
       <Movies />
-      <NavBar totalCountres={this.state.counters.filter(c => c.value>0).length}/>
+      {/* <NavBar totalCountres={this.state.counters.filter(c => c.value>0).length}/>
       <Counters 
       counters={this.state.counters}
       onReset={this.handleReset}  
       onIncrement={this.handleIncrement} 
       onDecrement={this.handleDecrement} 
       onDelete={this.handleDelete}
-      />
+      /> */}
       
     </React.Fragment>
   )
