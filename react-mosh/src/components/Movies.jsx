@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {getMovies} from './fakeMovies';
+import Like from './like';
 
 class Movies extends Component {
   state = { 
@@ -9,6 +10,13 @@ class Movies extends Component {
   handleDelete = (movie) => {
     const mov = this.state.movies.filter(m => m._id !== movie._id);
     this.setState({movies:mov});
+  }
+  handleLike = (movie) => {
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    movies[index] = {...movies[index]};
+    movies[index].liked = !movies[index].liked;
+    this.setState({movies});
   }
   render() { 
     const { movies } = this.state; 
@@ -26,6 +34,7 @@ class Movies extends Component {
               <th className="px-5 py-2 mx-5 text-start border-b-1">Stock</th>
               <th className="px-5 py-2 mx-5 text-start border-b-1">Rate</th>
               <th className="px-5 py-2 mx-5 text-start border-b-1"></th>
+              <th className="px-5 py-2 mx-5 text-start border-b-1"></th>
             </tr>
           </thead>
           <tbody>
@@ -35,6 +44,9 @@ class Movies extends Component {
                 <td className="px-5 py-2 mx-5 text-start border-b-1">{movie.genre.name}</td>
                 <td className="px-5 py-2 mx-5 text-start border-b-1">{movie.numberInStock}</td>
                 <td className="px-5 py-2 mx-5 text-start border-b-1">{movie.dailyRentalRate}</td>
+                <th className="px-5 py-2 mx-5 text-start border-b-1">
+                  <Like liked={movie.liked} onClick={() => this.handleLike(movie)}/>
+                </th>
                 <td className="px-5 py-2 mx-5 text-start border-b-1">
                   <button onClick={() => this.handleDelete(movie)} className="w-30 h-8 bg-red-500 text-2xl text-white rounded-md">Delete</button>
                 </td>

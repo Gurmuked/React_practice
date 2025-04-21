@@ -15,16 +15,25 @@ class Counter extends Component {
 
   render() { 
 
-    return (<div>
-          <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-          <button onClick={() => this.props.onIncrement(this.props.counter)} 
-               className="w-30 h-8 bg-gray-600 text-white rounded-md">
-               Increment
+    return (<div className="flex">
+       <div className="col-1">
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+       </div>
+      <div className="col">
+      <button onClick={() => this.props.onIncrement(this.props.counter)} 
+               className="w-20 h-8 bg-gray-600 text-white text-4xl items-center text-center rounded-md">
+               +
           </button>
-          <button onClick={() => this.props.onDelete(this.props.conuter.id)} 
-               className="w-30 h-8 bg-red-600 text-white rounded-md">
-               Delete
+          <button onClick={() => this.props.onDecrement(this.props.counter)} 
+               className="w-20 h-8 bg-gray-600 text-white text-4xl items-center text-center rounded-md m-2"
+                disabled = {this.props.counter.value === 0 ? "disabled" : ""}>
+               -
           </button>
+          <button onClick={() => this.props.onDelete(this.props.conuter)} 
+               className="w-20 h-8 bg-red-600 text-white rounded-md text-4xl items-center text-center">
+               X
+          </button>
+      </div>  
        </div>);
   }
 }
